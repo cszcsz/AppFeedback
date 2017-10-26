@@ -44,38 +44,19 @@ $("#submit").click(function () {
   return false;
 })
 
+//post传数据给后台
 $("#submit").click(function () {
-  var text = $("#message").val();
-  $.post(url,text,function (data) {
-    if (data.msg== 1)
+  var msg = $("#message").val();
+  var name = $("#appname").val();
+  $.post('http://localhost:8084/feedback/create',{
+    Authorization:'eyJhbGciOiJIUzUxMiJ9.eyJhdWRpZW5jZSI6IndlYiIsInlidG9rZW4iOiIiLCJhcHBuYW1lIjoiY29tbWl0IiwiY3JlYXRlZCI6MTUwOTAwNDkxMTA3NywieWJpZCI6NTgzMTQ0OSwiZXhwIjoxNTA5NjA5NzExfQ.Bx7WKv3lOF8nD6dI_DOmchQsSxPFoLZZpkxPWzLGBVay79TgoJyihDZroru73hwsteyP73zEhlPKaFplpLYfSA',
+    message:msg,
+    appname:name
+  },function (data) {
+    if (data.message)
     {
-      alert('反馈信息提交成功');
-    }
-    else if (data.msg==0)
-    {
-      alert('反馈内容不能为空');
-    }
-    else
-    {
-      alert('参数错误');
-    }
-  });
-})
-
-$("#submit").click(function () {
-  var text = $("#appname").val();
-  $.post(url,text,function (data) {
-    if (data.msg== 1)
-    {
-      alert('应用信息提交成功');
-    }
-    else if (data.msg==0)
-    {
-      alert('应用内容不能为空');
-    }
-    else
-    {
-      alert('参数错误');
+      console.log('反馈信息提交成功');
+      console.log('反馈的信息为'+data.message);
     }
   });
 })
