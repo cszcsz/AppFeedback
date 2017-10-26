@@ -44,4 +44,38 @@ $("#submit").click(function () {
   return false;
 })
 
+$("#submit").click(function () {
+  var text = $("#message").val();
+  $.post(url,text,function (data) {
+    if (data.msg== 1)
+    {
+      alert('反馈信息提交成功');
+    }
+    else if (data.msg==0)
+    {
+      alert('反馈内容不能为空');
+    }
+    else
+    {
+      alert('参数错误');
+    }
+  });
+})
 
+$("#submit").click(function () {
+  var text = $("#appname").val();
+  $.post(url,text,function (data) {
+    if (data.msg== 1)
+    {
+      alert('应用信息提交成功');
+    }
+    else if (data.msg==0)
+    {
+      alert('应用内容不能为空');
+    }
+    else
+    {
+      alert('参数错误');
+    }
+  });
+})
