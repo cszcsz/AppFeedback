@@ -48,8 +48,9 @@ $("#submit").click(function () {
 $("#submit").click(function () {
   var msg = $("#message").val();
   var name = $("#appname").val();
-  $.post('http://localhost:8084/feedback/create',{
-    Authorization:'eyJhbGciOiJIUzUxMiJ9.eyJhdWRpZW5jZSI6IndlYiIsInlidG9rZW4iOiIiLCJhcHBuYW1lIjoiY29tbWl0IiwiY3JlYXRlZCI6MTUwOTAwNDkxMTA3NywieWJpZCI6NTgzMTQ0OSwiZXhwIjoxNTA5NjA5NzExfQ.Bx7WKv3lOF8nD6dI_DOmchQsSxPFoLZZpkxPWzLGBVay79TgoJyihDZroru73hwsteyP73zEhlPKaFplpLYfSA',
+  var vq =localStorage.vq;
+  $.post('http://yb.upc.edu.cn:8084/feedback/create',{
+    Authorization:vq,
     message:msg,
     appname:name
   },function (data) {

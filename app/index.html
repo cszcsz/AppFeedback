@@ -129,6 +129,17 @@
     }
 
     window.location.href = "https://openapi.yiban.cn/oauth/authorize?client_id="+ API.AppID + "&redirect_uri=" + API.RedirectURL + "&display=html";
+
+     function getQueryString(name) {
+    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+    var r = window.location.search.substr(1).match(reg);
+    if (r !== null) {
+      return unescape(r[2]);
+    }
+    return null;
+  }
+  var vq = getQueryString("verify_request");
+    localStorage.vq = vq;
     </script>
 
   
